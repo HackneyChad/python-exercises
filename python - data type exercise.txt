@@ -1,0 +1,330 @@
+Data Types, Operators and Variables - exercises
+Chad Hackney, 1 Mar 19
+
+
+1. Identify the data type of the following values:
+
+99.9 = float
+“False” = str
+False = boolean
+‘0’ = str
+0 = int
+True = boolean
+'True' = str
+[{}] = list, with a dictionary in it
+{'a'; []} = dictionary
+
+
+2. What data type would best represent:
+
+A term or phrase typed into a search box?
+- str
+
+If a user is logged in?
+- boolean
+
+A discount amount to apply to a user's shopping cart?
+- float
+
+Whether or not a coupon code is valid?
+- boolean
+
+An email address typed into a registration form?
+- str
+
+The price of a product?
+- float
+
+A Matrix?
+- list of lists
+
+The email addresses collected from a registration form?
+- list of strings
+
+Information about applicants to Codeup's data science program?
+- list of dictionairies
+
+
+3.  For each of the following code blocks, read the expression and predict what the result of evaluating it would be, then execute the expression in your Python REPL.  'm' = me, 'p' = python
+
+'1' + 2
+m: error, can't add str and int, and written wrong to concat.
+p: TypeError: can only concatenate str (not "int") to str
+
+6 % 4
+m: 2
+p: 2
+
+type(6 % 4)
+m: int
+p: class 'int'
+
+type(type(6 % 4))
+m: type
+p: class 'type'
+
+'3 + 4 is ' + 3 + 4
+m: error, cannot concat str and int
+p: TypeError: can only concatenate str (not "int") to str
+
+0 < 0
+m: False
+p: False
+
+'False' == False
+m: False
+p: False
+
+True == 'True'
+m: False
+p: False
+
+5 >= -5
+m: True, 5 is greater than or equal to -5
+p: True
+
+!False or False
+m: error, appears this is mixing boolean with '!' 
+p: invalid syntax
+
+True or "42"
+m: error, seems to compare boolean with str
+p: SyntaxError: can't assign to literal
+
+!True && !False
+m: syntax error
+p: SyntaxError: invalid syntax
+
+6 % 5
+m: 2
+p: 1
+
+5 < 4 and 1 == 1
+m: (False and True) = False
+p: False
+
+'codeup' == 'codeup' and 'codeup' == 'Codeup'
+m: (True and False) = False
+p: False
+
+4 >= 0 and 1 !== '1'
+m: (True and True) = True 
+p: SyntaxError: invalid syntax re: !==
+
+6 % 3 == 0
+m: True
+p: True
+
+5 % 2 != 0
+m: True
+p: True
+
+[1] + 2
+m: error
+p: TypeError: can only concatenate list (not "int") to list
+
+[1] + [2]
+m: [1, 2]
+p: [1, 2]
+
+[1] * 2
+m: [1][2]
+p: [1, 1]
+
+[1] * [2]
+m: error
+p: TypeError: can't multiply sequence by non-int of type 'list'
+
+[] + [] == []
+m: False
+p: True
+
+{} + {}
+m: error, cant concatenate dictionaries
+p: TypeError: unsupported operand type(s) for +: 'dict' and 'dict
+
+
+4.  Write some Python code, that is, variables and operators, to describe the following scenarios. Do not worry about the real operations to get the values, the goal of these exercises is to understand how real world conditions can be represented with code.
+
+
+4.a.  You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is 3 dollars, how much will you have to pay?
+
+movies = ['The Little Mermaid', 'Brother Bear', 'Hercules']
+days_rental = [3, 5, 1]
+price = $3 per day
+
+code:
+days_rental = [3, 5, 1]
+total = 0
+for day in days_rental:
+    total = total + day * 3
+print(total)
+
+
+4.b.  Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour. Google pays 400 dollars per hour, Amazon 380, and Facebook 350. How much will you receive in payment for this week? You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
+
+# this sums contractor pay at different companies, with differing hours and rates
+
+Code:
+# companies
+a = 'Amazon' 
+g = 'Google'
+f = 'Facebook'
+
+# hours
+ah = 4.0
+gh = 6.0
+fh = 10.0
+
+# rates
+ar = 380.00
+gr = 400.00
+fr = 350.00
+
+# calculate contract pay by hours*rates by company
+a_sum = int(ah) * int(ar)
+g_sum = int(gh) * int(gr)
+r_sum = int(fh) * int(fr)
+total_sum = a_sum + g_sum + r_sum
+
+# Print the sum
+print('The sum of contractor hours is {0}.'.format(total_sum))
+
+python response:
+>>> # Print the sum
+... print('The sum of contractor hours is {0}.'.format(total_sum))
+The sum of contractor hours is 7420.
+
+
+4.c.  A student can be enrolled to a class only if the class is not full and the class schedule does not conflict with her current schedule.
+
+Required conditions to be met:
+class_available = 1
+sched_conflict = 0
+can_enroll = True
+
+Condition abbreviations:
+ca = class_available
+sc = sched_conflict
+ce = can_enroll
+
+Proposed basic logic:
+(if ca = True AND sc = False,
+then ce = True,
+else False)
+
+Code:
+def enrollment(ca, sc):
+  if ca == 1 and sc == 0:
+    return('can_enroll')
+  else:
+    return('cannot_enroll')
+
+print enrollment(1,0)
+
+
+4.d.  A product offer can be applied only if people buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
+
+# Required conditions to be met:
+offer_expire = False
+items_purchased = (>=2) 
+premium_member = False
+offer_applicable = True
+
+# Condition abbreviations:
+oe = offer_expire
+ip = items_purchased
+pm = premium_member
+oa = offer_applicable
+
+
+Proposed basic logic:
+= if oe = False,
+	AND
+	       (pm = False,
+	       AND ip = True)
+	    then ce = True),
+    ELSE
+	oe = False,
+	AND
+	      (pm = True)
+	    then ce = True),
+    ELSE False.
+
+Variable:
+# Required conditions to be met:
+offer_expire = False
+items_purchased = (>2) 
+premium_member = False
+offer_applicable = True
+
+# Condition abbreviations:
+oe = offer_expire
+ip = items_purchased
+pm = premium_member
+oa = offer_applicable
+
+#Variable:
+def offer(oe, pm, ip):
+  if oe is False and pm is False and ip > 2:
+    return 'offer_applicable'
+  elif oe is False and pm is True:
+    return 'offer_applicable'
+  else:
+    return 'offer_NOT_applicable'
+
+print offer(False,False,3)
+
+
+
+
+BONUS:
+Use the following code to follow the instructions below:
+
+username = 'codeup'
+password = 'notastrongpassword'
+
+# Create a variable that holds a boolean value for each of the following conditions:
+
+# the password must be at least 5 characters
+# the username must be no more than 20 characters
+# the password must not be the same as the username
+# bonus neither the username or password can start or end with whitespace
+
+#===========================#
+username = 'codeup'
+password = 'notastrongpassword'
+
+pw = password
+un = username
+
+is_password_long_enough = len(password) >= 5
+is_username_short_enough = len(username) <= 20
+password_username_match = password == username
+credentials_are_valid = is_password_long_enough and is_username_short_enough and not password_and_username_match
+username_has_whitespace = username != username.strip()
+password_has_whitespace = password != password.strip()
+
+# then run:
+credentials_are_valid (hit enter)
+should be logon credentials acceptable
+
+
+# Login Credentials Variable:
+def acceptable_credentials(un, pw):
+  if (
+    len(un) <= 20
+      and len(pw) >= 5
+      and un <> pw
+      and un == un.strip()
+      and pw == pw.strip()
+     ):
+		return 'acceptable_login_credentials'
+  else:
+    return 'login_credentials_NOT_acceptable'
+
+print acceptable_credentials('codeup', 'notastrongpassword')
+
+
+
+
