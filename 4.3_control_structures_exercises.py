@@ -481,6 +481,10 @@ i = 2                 # starting point of loop
 # for n in range(1, upper_bound + 1):
 #     print('{} | {} | {}'.format(n, n ** 2, n** 3))
 
+###  ZACH CODE ALSO SHOWS HOW TO FORMAT FOR ALIGNMENT, LEFT, RIGHT, ETC  ###
+###  VERY IMPORTANT... RESEARCH THIS!!   ###
+
+
 
 ## ================================================================================ ##
 
@@ -572,23 +576,24 @@ i = 2                 # starting point of loop
 
 
 ## or...
-# Alternately, using lists in the if statement...
-books = [{'title': 'The Shining', 'author': 'Stephen King', 'genre': ['fiction', 'horror']},
-           {'title': 'Japanese Art of Tidying', 'author': 'Marie Kondo', 'genre': ['self-help', 'crazy']},
-           {'title': 'Hatchet', 'author': 'Gary Paulson', 'genre': ['fiction', 'adventure']},
-           {'title': 'Robinson Crusoe', 'author': 'Daniel Defoe', 'genre': ['fiction', 'adventure']},
-           {'title': 'Stromboli Pizza: The Beastie Boys Book', 'author': 'Beastie Boys', 'genre': ['non-fiction', 'picture']}]
-genre_to_show = input('Enter a genre of book. ')
-for book in books:
-    if genre_to_show not in book['genre']:
-        continue
-    print('--------------')
-    print('- title: %s' % book['title'])
-    print('- author: %s' % book['author'])
-    print('- genre: %s' % book['genre'])
-    print('--------------')
+# # Alternately, using lists in the if statement...
+# books = [{'title': 'The Shining', 'author': 'Stephen King', 'genre': ['fiction', 'horror']},
+#            {'title': 'Japanese Art of Tidying', 'author': 'Marie Kondo', 'genre': ['self-help', 'crazy']},
+#            {'title': 'Hatchet', 'author': 'Gary Paulson', 'genre': ['fiction', 'adventure']},
+#            {'title': 'Robinson Crusoe', 'author': 'Daniel Defoe', 'genre': ['fiction', 'adventure']},
+#            {'title': 'Stromboli Pizza: The Beastie Boys Book', 'author': 'Beastie Boys', 'genre': ['non-fiction', 'picture']}]
+# genre_to_show = input('Enter a genre of book. ')
+# for book in books:
+#     if genre_to_show not in book['genre']:
+#         continue
+#     print('--------------')
+#     print('- title: %s' % book['title'])
+#     print('- author: %s' % book['author'])
+#     print('- genre: %s' % book['genre'])
+#     print('--------------')
 
-
+#####    SEE ZACH CODE FOR EXAMPLE OF HOW TO USE 'KEYS' TO DO THIS ALSO    #####
+#####    VERY IMPORTANT AND HANDY... DO RESEARCH THIS !!    #####
 
 ## ================================================================================ ##
 
@@ -605,3 +610,6 @@ for book in books:
 # for feature in book_list:
 #     if chosen_genre in feature['genre']:
 #         print(feature['title'], ' - ', feature['author'])
+
+## ================================================================================ ##
+##    CODE COMPLETE   ##
