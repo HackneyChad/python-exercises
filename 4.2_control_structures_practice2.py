@@ -1,4 +1,4 @@
-# 4.2_control_structures_practice2.py
+# 4.2_control_structures_practice.py
 # Hackney, Chad
 # 4 Mar 19
 
