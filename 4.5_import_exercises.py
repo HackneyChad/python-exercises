@@ -44,10 +44,8 @@ print('itertools now imported')
 
 # How many different ways can you combine the letters from "abc" with the numbers 1, 2, and 3?
 from itertools import product
-arrays = [('a',1), ('b',2), ('c',3)]
-test = list(product(*arrays))
-test
-print(test)
+for i in product(['a','b','c'],[1,2,3]):
+    print(i)
 print('How many different ways can you combine the letters from "abc" with the numbers 1, 2, and 3?')
 print('source of code/reference: https://www.blog.pythonlibrary.org/2016/04/20/python-201-an-intro-to-itertools/')
 
@@ -57,862 +55,228 @@ for item in permutations('abcd', 2):
     print(''.join(item))
 print('source of code/reference: https://www.blog.pythonlibrary.org/2016/04/20/python-201-an-intro-to-itertools/')
 
-#====================================================================================#
-# Save this file (see classroom page for link to file) as profiles.json inside of your exercises directory. Use the load function from the json module to open this file, it will produce a list of dictionaries. Using this data, write some code that calculates and outputs the following information:
 
+#==== JSON DATA PROBLEM =======================================================================#
+# # Save this file (see classroom page for link to file) as profiles.json inside of your exercises directory.
+# # Use the load function from the json module to open this file, it will produce a list of dictionaries.
+# # Using this data, write some code that calculates and outputs the following information:
+
+# import with json.load(open('filename'))
+# # The pprint code below renders it in a legible/readable structure.
 import json
-x = '[
-    {
-    "_id": "54e23c3e46ab53a440b580e8",
-    "index": 0,
-    "guid": "9962b468-ef3e-4993-b677-617469bc3008",
-    "isActive": "false",
-    "balance": "$2,097.02",
-    "picture": "http://placehold.it/32x32",
-    "age": 39,
-    "eyeColor": "blue",
-    "name": "Hebert Estes",
-    "gender": "male",
-    "company": "ANDRYX",
-    "email": "hebertestes@andryx.com",
-    "phone": "+1 (866) 456-2268",
-    "address": "121 Emmons Avenue, Klondike, Kentucky, 5975",
-    "about": "Sit cillum deserunt irure laboris tempor fugiat laboris. Amet commodo amet est incididunt. Dolore qui fugiat cillum pariatur dolore excepteur elit ipsum.\r\n",
-    "registered": "2014-11-10T01:44:03 +06:00",
-    "latitude": -80.157843,
-    "longitude": 161.93016,
-    "tags": [
-      "sit",
-      "occaecat",
-      "non",
-      "ea",
-      "sit",
-      "laboris",
-      "exercitation"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Tanisha Leonard"
-      },
-      {
-        "id": 1,
-        "name": "Dennis Wilson"
-      },
-      {
-        "id": 2,
-        "name": "Lupe Howe"
-      }
-    ],
-    "greeting": "Hello, Hebert Estes! You have 4 unread messages.",
-    "favoriteFruit": "strawberry"
-  }, {
-    "_id": "54e23c3ef5cc0d250968c212",
-    "index": 1,
-    "guid": "905f849d-49bf-4a57-b4f3-5d6e4bf1b04c",
-    "isActive": "false",
-    "balance": "$3,654.02",
-    "picture": "http://placehold.it/32x32",
-    "age": 30,
-    "eyeColor": "green",
-    "name": "Allison Wynn",
-    "gender": "male",
-    "company": "PHARMACON",
-    "email": "allisonwynn@pharmacon.com",
-    "phone": "+1 (926) 525-3131",
-    "address": "724 Brevoort Place, Lodoga, Indiana, 3880",
-    "about": "Esse quis cillum sunt occaecat ad et eu incididunt aliquip dolor. Adipisicing labore magna anim cillum nisi. Elit mollit consequat velit nulla cillum excepteur elit ullamco deserunt. Anim aliquip Lorem excepteur ad veniam et labore in qui ullamco. Occaecat sit do incididunt voluptate id magna ea amet.\r\n",
-    "registered": "2014-06-10T13:41:26 +05:00",
-    "latitude": 55.737207,
-    "longitude": -167.177561,
-    "tags": [
-      "enim",
-      "officia",
-      "laboris",
-      "irure",
-      "veniam",
-      "occaecat",
-      "pariatur"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Curry Cox"
-      },
-      {
-        "id": 1,
-        "name": "Alma Dale"
-      },
-      {
-        "id": 2,
-        "name": "Barbara Mayo"
-      }
-    ],
-    "greeting": "Hello, Allison Wynn! You have 19 unread messages.",
-    "favoriteFruit": "apple"
-  },{
-    "_id": "54e23c3e09cc6875638cd36b",
-    "index": 2,
-    "guid": "1b042d48-9cfa-4db5-8b60-4104165591c3",
-    "isActive": "true",
-    "balance": "$1,536.02",
-    "picture": "http://placehold.it/32x32",
-    "age": 31,
-    "eyeColor": "brown",
-    "name": "Jacobs Floyd",
-    "gender": "male",
-    "company": "QUONK",
-    "email": "jacobsfloyd@quonk.com",
-    "phone": "+1 (853) 537-3315",
-    "address": "941 Cox Place, Bluffview, Georgia, 5882",
-    "about": "Deserunt adipisicing proident exercitation cillum anim consectetur labore exercitation. Commodo reprehenderit laborum enim exercitation. Ullamco nulla culpa aliqua nisi fugiat consectetur deserunt nostrud in eu.\r\n",
-    "registered": "2014-07-30T03:17:32 +05:00",
-    "latitude": 30.215667,
-    "longitude": 68.831905,
-    "tags": [
-      "est",
-      "aute",
-      "laborum",
-      "sint",
-      "anim",
-      "sit",
-      "consectetur"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Robles Chan"
-      },
-      {
-        "id": 1,
-        "name": "Whitfield Strickland"
-      },
-      {
-        "id": 2,
-        "name": "Lina Melton"
-      }
-    ],
-    "greeting": "Hello, Jacobs Floyd! You have 5 unread messages.",
-    "favoriteFruit": "banana"
-  },{
-    "_id": "54e23c3e54e4094147a3b1da",
-    "index": 3,
-    "guid": "69eb3454-8acc-46f1-a636-c6df00dfb542",
-    "isActive": "false",
-    "balance": "$3,919.64",
-    "picture": "http://placehold.it/32x32",
-    "age": 20,
-    "eyeColor": "green",
-    "name": "Fay Hammond",
-    "gender": "female",
-    "company": "INRT",
-    "email": "fayhammond@inrt.com",
-    "phone": "+1 (922) 429-2592",
-    "address": "518 Randolph Street, Whitestone, Arizona, 8189",
-    "about": "Aliqua sunt exercitation quis cupidatat fugiat nulla laboris occaecat ut reprehenderit qui incididunt. Amet excepteur qui amet mollit sint enim velit est dolor eu. Velit labore ea aute ipsum consequat culpa cupidatat excepteur aliqua. Sit commodo id est deserunt commodo. Labore sit deserunt enim in dolore incididunt. Officia qui est veniam cillum consequat minim duis Lorem esse magna culpa cupidatat cupidatat enim. Amet eiusmod elit qui reprehenderit commodo quis.\r\n",
-    "registered": "2015-01-30T08:05:38 +06:00",
-    "latitude": 33.825844,
-    "longitude": -65.969538,
-    "tags": [
-      "aliqua",
-      "esse",
-      "sint",
-      "pariatur",
-      "commodo",
-      "do",
-      "anim"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Dudley Booker"
-      },
-      {
-        "id": 1,
-        "name": "Esmeralda Tyler"
-      },
-      {
-        "id": 2,
-        "name": "Rosa Hampton"
-      }
-    ],
-    "greeting": "Hello, Fay Hammond! You have 10 unread messages.",
-    "favoriteFruit": "banana"
-  },{
-    "_id": "54e23c3e177caf5567ba87ac",
-    "index": 4,
-    "guid": "97962c85-7700-4ffa-a01e-2fcbc147fd81",
-    "isActive": "false",
-    "balance": "$3,681.39",
-    "picture": "http://placehold.it/32x32",
-    "age": 39,
-    "eyeColor": "green",
-    "name": "Chasity Marsh",
-    "gender": "female",
-    "company": "WAZZU",
-    "email": "chasitymarsh@wazzu.com",
-    "phone": "+1 (976) 425-2362",
-    "address": "604 Just Court, Eastvale, Federated States Of Micronesia, 8644",
-    "about": "Irure excepteur consequat esse qui tempor deserunt nulla fugiat. Ut excepteur do veniam dolore dolor proident sunt voluptate ad ipsum nisi. Lorem proident deserunt Lorem cupidatat dolor nulla qui id aliqua. Et nulla laborum deserunt tempor ad culpa. Ullamco occaecat adipisicing dolore laborum laborum duis aliqua nisi irure ex. Incididunt tempor Lorem quis dolore.\r\n",
-    "registered": "2014-07-31T06:03:19 +05:00",
-    "latitude": -31.660978,
-    "longitude": 37.559095,
-    "tags": [
-      "aliquip",
-      "duis",
-      "irure",
-      "amet",
-      "aliquip",
-      "dolore",
-      "esse"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Kristina Glover"
-      },
-      {
-        "id": 1,
-        "name": "Ora Christian"
-      },
-      {
-        "id": 2,
-        "name": "Jacklyn Joseph"
-      }
-    ],
-    "greeting": "Hello, Chasity Marsh! You have 9 unread messages.",
-    "favoriteFruit": "apple"
-  },{
-    "_id": "54e23c3eaffbb506aa15ec1c",
-    "index": 5,
-    "guid": "fc3e04d1-44c2-449e-891a-d4f8053d14a4",
-    "isActive": "true",
-    "balance": "$1,694.42",
-    "picture": "http://placehold.it/32x32",
-    "age": 30,
-    "eyeColor": "brown",
-    "name": "Camacho Cortez",
-    "gender": "male",
-    "company": "EARTHWAX",
-    "email": "camachocortez@earthwax.com",
-    "phone": "+1 (869) 528-2019",
-    "address": "101 Haring Street, Nicut, Louisiana, 1473",
-    "about": "Qui ad commodo elit voluptate cupidatat exercitation amet ea laborum sunt aliquip nisi irure. Veniam voluptate eiusmod sint aliquip ea. Voluptate voluptate Lorem nulla laborum eiusmod occaecat et nostrud sint in cillum reprehenderit magna nulla. Lorem id fugiat laborum qui mollit amet. Culpa officia ipsum nisi culpa in. Fugiat quis eu cupidatat non culpa in ea velit pariatur non in excepteur.\r\n",
-    "registered": "2014-03-17T12:04:00 +05:00",
-    "latitude": 74.434627,
-    "longitude": 69.527088,
-    "tags": [
-      "et",
-      "sit",
-      "in",
-      "id",
-      "ullamco",
-      "elit",
-      "laborum"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Sexton Tillman"
-      },
-      {
-        "id": 1,
-        "name": "Boone Steele"
-      },
-      {
-        "id": 2,
-        "name": "Elvia Ward"
-      }
-    ],
-    "greeting": "Hello, Camacho Cortez! You have 19 unread messages.",
-    "favoriteFruit": "apple"
-  },{
-    "_id": "54e23c3e0fd8074c2ca52667",
-    "index": 6,
-    "guid": "af8d9a03-fde9-4039-b20c-c4708d4cfc3c",
-    "isActive": "false",
-    "balance": "$1,214.10",
-    "picture": "http://placehold.it/32x32",
-    "age": 35,
-    "eyeColor": "green",
-    "name": "Avery Flynn",
-    "gender": "male",
-    "company": "TERSANKI",
-    "email": "averyflynn@tersanki.com",
-    "phone": "+1 (966) 404-2471",
-    "address": "569 Oakland Place, Beyerville, Puerto Rico, 2395",
-    "about": "Minim consequat anim ad et tempor et pariatur cillum ut. Ea Lorem consectetur sunt aliquip ea minim minim id dolore incididunt qui magna. Magna velit labore dolore voluptate ut aliquip esse qui est ipsum cupidatat duis enim. Sunt esse eiusmod cupidatat duis quis sunt anim dolore adipisicing enim dolore aliqua mollit. Commodo sit ad eiusmod reprehenderit.\r\n",
-    "registered": "2014-04-13T10:25:03 +05:00",
-    "latitude": -89.879409,
-    "longitude": 143.441709,
-    "tags": [
-      "quis",
-      "esse",
-      "Lorem",
-      "minim",
-      "nostrud",
-      "voluptate",
-      "laborum"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Ball Henson"
-      },
-      {
-        "id": 1,
-        "name": "Dalton Mccoy"
-      },
-      {
-        "id": 2,
-        "name": "Carolina Sharp"
-      }
-    ],
-    "greeting": "Hello, Avery Flynn! You have 13 unread messages.",
-    "favoriteFruit": "banana"
-  },{
-    "_id": "54e23c3eb112d96e4204914d",
-    "index": 7,
-    "guid": "95f1c020-f9eb-4a29-b236-e766759d89d0",
-    "isActive": "false",
-    "balance": "$2,930.31",
-    "picture": "http://placehold.it/32x32",
-    "age": 23,
-    "eyeColor": "blue",
-    "name": "Michael Cash",
-    "gender": "male",
-    "company": "ORBIXTAR",
-    "email": "michaelcash@orbixtar.com",
-    "phone": "+1 (996) 439-3660",
-    "address": "808 Duryea Court, Downsville, Northern Mariana Islands, 2154",
-    "about": "Minim proident minim consectetur nostrud dolor reprehenderit. Ea est proident non do cillum eu est dolor Lorem id. Tempor enim incididunt consequat voluptate nulla ipsum voluptate id. Incididunt enim laboris nostrud in exercitation est culpa nulla velit.\r\n",
-    "registered": "2014-05-24T17:56:54 +05:00",
-    "latitude": -86.621367,
-    "longitude": -4.06197,
-    "tags": [
-      "eu",
-      "sit",
-      "dolore",
-      "culpa",
-      "Lorem",
-      "in",
-      "esse"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Rodgers Nolan"
-      },
-      {
-        "id": 1,
-        "name": "Jewel Marks"
-      },
-      {
-        "id": 2,
-        "name": "Sue Mejia"
-      }
-    ],
-    "greeting": "Hello, Michael Cash! You have 17 unread messages.",
-    "favoriteFruit": "strawberry"
-  },{
-    "_id": "54e23c3ef30f14d0e5afddf3",
-    "index": 8,
-    "guid": "bde2d56f-2488-40d0-a7d2-21019ee8a18b",
-    "isActive": "false",
-    "balance": "$1,944.15",
-    "picture": "http://placehold.it/32x32",
-    "age": 25,
-    "eyeColor": "green",
-    "name": "Madeleine Bray",
-    "gender": "female",
-    "company": "KIDSTOCK",
-    "email": "madeleinebray@kidstock.com",
-    "phone": "+1 (820) 541-2969",
-    "address": "684 Stratford Road, Rosine, District Of Columbia, 7177",
-    "about": "Ullamco ea esse ullamco commodo quis amet ut ad. Sint eiusmod ullamco minim nostrud amet in ex adipisicing velit cillum Lorem enim nostrud. Deserunt esse incididunt eiusmod commodo ullamco id pariatur tempor duis laboris Lorem. Laboris magna Lorem quis laborum ullamco. Dolor minim magna ut occaecat in consequat consequat in commodo pariatur voluptate pariatur dolore. Quis exercitation cillum labore cillum laborum. Dolore est reprehenderit anim reprehenderit consectetur sit quis ea ut veniam.\r\n",
-    "registered": "2014-08-11T08:54:06 +05:00",
-    "latitude": 45.118798,
-    "longitude": -7.698707,
-    "tags": [
-      "id",
-      "magna",
-      "excepteur",
-      "excepteur",
-      "excepteur",
-      "duis",
-      "excepteur"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Herrera Doyle"
-      },
-      {
-        "id": 1,
-        "name": "Berger Fisher"
-      },
-      {
-        "id": 2,
-        "name": "Chang Coffey"
-      }
-    ],
-    "greeting": "Hello, Madeleine Bray! You have 2 unread messages.",
-    "favoriteFruit": "strawberry"
-  },{
-    "_id": "54e23c3ebd80e9c26b057fa3",
-    "index": 9,
-    "guid": "75991ca5-05ed-499e-bbb5-f057f86d05d7",
-    "isActive": "true",
-    "balance": "$2,839.22",
-    "picture": "http://placehold.it/32x32",
-    "age": 37,
-    "eyeColor": "blue",
-    "name": "Corine French",
-    "gender": "female",
-    "company": "INTRAWEAR",
-    "email": "corinefrench@intrawear.com",
-    "phone": "+1 (987) 573-3164",
-    "address": "964 Clara Street, Snyderville, Oklahoma, 3627",
-    "about": "Sint cillum laborum labore duis fugiat voluptate adipisicing. Ad culpa et et ea incididunt nulla excepteur officia. Cillum veniam amet ipsum reprehenderit do eiusmod aliqua aute nisi Lorem consectetur esse in incididunt.\r\n",
-    "registered": "2014-06-25T20:17:13 +05:00",
-    "latitude": -37.637422,
-    "longitude": 154.195523,
-    "tags": [
-      "laboris",
-      "in",
-      "dolore",
-      "mollit",
-      "velit",
-      "laboris",
-      "excepteur"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Greta Hill"
-      },
-      {
-        "id": 1,
-        "name": "Cline Curry"
-      },
-      {
-        "id": 2,
-        "name": "Branch Sawyer"
-      }
-    ],
-    "greeting": "Hello, Corine French! You have 18 unread messages.",
-    "favoriteFruit": "banana"
-  },{
-    "_id": "54e23c3e6d89c09f5507e7dd",
-    "index": 10,
-    "guid": "87cffc18-3acf-40c5-8708-1bb93f1b68de",
-    "isActive": "true",
-    "balance": "$2,467.31",
-    "picture": "http://placehold.it/32x32",
-    "age": 29,
-    "eyeColor": "blue",
-    "name": "Trudy Cummings",
-    "gender": "female",
-    "company": "SPLINX",
-    "email": "trudycummings@splinx.com",
-    "phone": "+1 (925) 403-2797",
-    "address": "558 Charles Place, Tedrow, California, 9832",
-    "about": "Non id adipisicing deserunt non magna ex adipisicing sint esse sint. Laborum ea nostrud Lorem voluptate quis proident eu nisi exercitation in. Consequat occaecat proident officia anim.\r\n",
-    "registered": "2014-03-13T17:54:31 +05:00",
-    "latitude": -36.185131,
-    "longitude": -37.774906,
-    "tags": [
-      "aute",
-      "occaecat",
-      "ea",
-      "pariatur",
-      "consectetur",
-      "magna",
-      "ea"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Amber Gates"
-      },
-      {
-        "id": 1,
-        "name": "Barron Walsh"
-      },
-      {
-        "id": 2,
-        "name": "Nell Bolton"
-      }
-    ],
-    "greeting": "Hello, Trudy Cummings! You have 2 unread messages.",
-    "favoriteFruit": "strawberry"
-  },{
-    "_id": "54e23c3e4192cf53edd67c99",
-    "index": 11,
-    "guid": "5a5496f1-a027-4c21-85da-c399234cd9a5",
-    "isActive": "true",
-    "balance": "$3,304.99",
-    "picture": "http://placehold.it/32x32",
-    "age": 21,
-    "eyeColor": "brown",
-    "name": "Peggy Mayer",
-    "gender": "female",
-    "company": "ACCUPRINT",
-    "email": "peggymayer@accuprint.com",
-    "phone": "+1 (854) 428-2585",
-    "address": "830 Willmohr Street, Crenshaw, Missouri, 6032",
-    "about": "Aliqua sit enim cillum aliquip ad proident excepteur in consectetur eiusmod. Ipsum sint cillum veniam eiusmod aute sunt et do est tempor. Lorem elit dolor dolore incididunt cillum. Enim occaecat minim sunt cillum est velit cillum deserunt tempor eu.\r\n",
-    "registered": "2014-09-14T07:06:49 +05:00",
-    "latitude": 48.323912,
-    "longitude": 22.184821,
-    "tags": [
-      "commodo",
-      "esse",
-      "ad",
-      "ullamco",
-      "ea",
-      "sint",
-      "ipsum"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Hopkins Mccall"
-      },
-      {
-        "id": 1,
-        "name": "Nielsen Weeks"
-      },
-      {
-        "id": 2,
-        "name": "Dale Knowles"
-      }
-    ],
-    "greeting": "Hello, Peggy Mayer! You have 13 unread messages.",
-    "favoriteFruit": "strawberry"
-  },{
-    "_id": "54e23c3eedcc65f0ec3a5496",
-    "index": 12,
-    "guid": "759a21c4-5f9c-4189-9c50-c9d8a9f31037",
-    "isActive": "false",
-    "balance": "$3,844.42",
-    "picture": "http://placehold.it/32x32",
-    "age": 40,
-    "eyeColor": "brown",
-    "name": "Chan Hurley",
-    "gender": "male",
-    "company": "ZEAM",
-    "email": "chanhurley@zeam.com",
-    "phone": "+1 (917) 475-3705",
-    "address": "915 Channel Avenue, Clinton, North Dakota, 6244",
-    "about": "Voluptate exercitation ut anim ex adipisicing ut do officia incididunt fugiat cupidatat aliqua. Cillum ullamco irure dolore est consectetur non consequat. Nulla ullamco eu irure qui dolor magna ipsum id in enim voluptate aute. Officia aliqua dolore ut reprehenderit Lorem cillum. Cillum reprehenderit eu cillum aliqua sint eiusmod cupidatat culpa elit in. Fugiat voluptate reprehenderit amet anim qui nisi velit aliqua proident anim.\r\n",
-    "registered": "2014-03-01T14:51:23 +06:00",
-    "latitude": 85.901051,
-    "longitude": -74.986179,
-    "tags": [
-      "minim",
-      "veniam",
-      "sit",
-      "aute",
-      "irure",
-      "non",
-      "eiusmod"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Reese Grant"
-      },
-      {
-        "id": 1,
-        "name": "Jenna Kinney"
-      },
-      {
-        "id": 2,
-        "name": "Rhea May"
-      }
-    ],
-    "greeting": "Hello, Chan Hurley! You have 7 unread messages.",
-    "favoriteFruit": "apple"
-  },{
-    "_id": "54e23c3eb813e66c6d33aa82",
-    "index": 13,
-    "guid": "6fd14a8e-3158-48eb-a7e1-93fe57b74746",
-    "isActive": "true",
-    "balance": "$3,594.99",
-    "picture": "http://placehold.it/32x32",
-    "age": 40,
-    "eyeColor": "blue",
-    "name": "Diaz Pena",
-    "gender": "male",
-    "company": "SUREPLEX",
-    "email": "diazpena@sureplex.com",
-    "phone": "+1 (986) 511-3050",
-    "address": "184 Kingsway Place, Grantville, Michigan, 2421",
-    "about": "Enim elit amet officia consectetur do Lorem reprehenderit cupidatat exercitation velit. Ex tempor esse consectetur dolore aute et. Cupidatat duis nulla in incididunt nulla ullamco non magna officia commodo anim. Labore quis ullamco est deserunt excepteur duis nostrud deserunt cillum proident. Non eiusmod consectetur pariatur deserunt irure quis exercitation ex incididunt quis dolore pariatur sunt irure. Eu do fugiat laboris tempor culpa.\r\n",
-    "registered": "2014-04-19T20:43:12 +05:00",
-    "latitude": 6.606991,
-    "longitude": 81.593748,
-    "tags": [
-      "excepteur",
-      "elit",
-      "ullamco",
-      "excepteur",
-      "ad",
-      "quis",
-      "dolore"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Mcmillan Knox"
-      },
-      {
-        "id": 1,
-        "name": "Flossie Dixon"
-      },
-      {
-        "id": 2,
-        "name": "Sears Carson"
-      }
-    ],
-    "greeting": "Hello, Diaz Pena! You have 13 unread messages.",
-    "favoriteFruit": "strawberry"
-  },{
-    "_id": "54e23c3e502a2f526b689c3e",
-    "index": 14,
-    "guid": "459cc82d-7878-42cb-b9c6-073506380036",
-    "isActive": "true",
-    "balance": "$2,940.24",
-    "picture": "http://placehold.it/32x32",
-    "age": 40,
-    "eyeColor": "brown",
-    "name": "Heath Castaneda",
-    "gender": "male",
-    "company": "NETPLODE",
-    "email": "heathcastaneda@netplode.com",
-    "phone": "+1 (944) 478-3741",
-    "address": "278 Village Road, Sunnyside, Massachusetts, 7496",
-    "about": "Consectetur mollit cupidatat ex consectetur eiusmod ut. Cupidatat anim cupidatat cupidatat minim ipsum et quis amet proident pariatur. Do consectetur fugiat quis nisi non. Ut eu consequat consequat in ullamco eiusmod quis cillum sunt dolore anim. Non irure aliqua aliqua enim elit labore consequat.\r\n",
-    "registered": "2014-07-30T21:38:43 +05:00",
-    "latitude": 69.928876,
-    "longitude": 33.649878,
-    "tags": [
-      "elit",
-      "commodo",
-      "ut",
-      "ullamco",
-      "ullamco",
-      "velit",
-      "ullamco"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Dora Mack"
-      },
-      {
-        "id": 1,
-        "name": "Christensen Camacho"
-      },
-      {
-        "id": 2,
-        "name": "Castro Kelly"
-      }
-    ],
-    "greeting": "Hello, Heath Castaneda! You have 12 unread messages.",
-    "favoriteFruit": "strawberry"
-  },{
-    "_id": "54e23c3e69d22e49c7fe62de",
-    "index": 15,
-    "guid": "33d2bbe5-d6f7-4844-88fc-b9f6af63b373",
-    "isActive": "false",
-    "balance": "$3,062.41",
-    "picture": "http://placehold.it/32x32",
-    "age": 38,
-    "eyeColor": "brown",
-    "name": "Greer Blankenship",
-    "gender": "male",
-    "company": "QUALITERN",
-    "email": "greerblankenship@qualitern.com",
-    "phone": "+1 (957) 482-3874",
-    "address": "557 Ingraham Street, Brambleton, South Dakota, 8482",
-    "about": "Non in excepteur nostrud consectetur. Qui non consectetur officia incididunt elit laboris exercitation exercitation est minim veniam ullamco dolore. Eu sit aute culpa ex sunt amet. Ut et amet Lorem sunt anim pariatur.\r\n",
-    "registered": "2014-03-30T21:39:41 +05:00",
-    "latitude": -71.093388,
-    "longitude": 65.740255,
-    "tags": [
-      "enim",
-      "eiusmod",
-      "Lorem",
-      "reprehenderit",
-      "nisi",
-      "anim",
-      "sunt"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Woods Norman"
-      },
-      {
-        "id": 1,
-        "name": "Marilyn Haney"
-      },
-      {
-        "id": 2,
-        "name": "Webster Nielsen"
-      }
-    ],
-    "greeting": "Hello, Greer Blankenship! You have 7 unread messages.",
-    "favoriteFruit": "banana"
-  },{
-    "_id": "54e23c3e42676228c442a669",
-    "index": 16,
-    "guid": "e44604f0-c7a8-4b89-bda3-0f4710ebe28a",
-    "isActive": "false",
-    "balance": "$3,067.82",
-    "picture": "http://placehold.it/32x32",
-    "age": 32,
-    "eyeColor": "green",
-    "name": "Coffey Hayes",
-    "gender": "male",
-    "company": "INQUALA",
-    "email": "coffeyhayes@inquala.com",
-    "phone": "+1 (880) 451-3490",
-    "address": "490 Durland Place, Craig, Tennessee, 5034",
-    "about": "Est esse irure Lorem ullamco veniam fugiat laborum veniam excepteur. Ad enim pariatur nostrud excepteur et nostrud velit dolore ex enim cillum in aliquip fugiat. Nulla laborum exercitation irure magna elit laborum magna ad excepteur. Cillum pariatur Lorem eiusmod ad dolore eiusmod veniam do minim laborum in dolor. Reprehenderit elit ad id voluptate Lorem Lorem dolor cupidatat excepteur. Proident minim ea aute nulla.\r\n",
-    "registered": "2014-04-01T23:04:39 +05:00",
-    "latitude": -30.662644,
-    "longitude": 59.806684,
-    "tags": [
-      "duis",
-      "est",
-      "in",
-      "officia",
-      "nostrud",
-      "occaecat",
-      "mollit"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Suarez Perry"
-      },
-      {
-        "id": 1,
-        "name": "Marlene Sheppard"
-      },
-      {
-        "id": 2,
-        "name": "Cohen Yates"
-      }
-    ],
-    "greeting": "Hello, Coffey Hayes! You have 19 unread messages.",
-    "favoriteFruit": "strawberry"
-  },{
-    "_id": "54e23c3e4ac5969958013235",
-    "index": 17,
-    "guid": "fa7e26df-d239-41e8-9aa9-be5e808b6f89",
-    "isActive": "true",
-    "balance": "$2,646.76",
-    "picture": "http://placehold.it/32x32",
-    "age": 24,
-    "eyeColor": "brown",
-    "name": "Leanne Hurst",
-    "gender": "female",
-    "company": "ACCIDENCY",
-    "email": "leannehurst@accidency.com",
-    "phone": "+1 (820) 420-3317",
-    "address": "196 Columbus Place, Carbonville, New Jersey, 7513",
-    "about": "Dolor occaecat dolore ut tempor. Veniam elit anim duis do pariatur. Qui excepteur nisi eiusmod mollit laboris fugiat commodo ipsum reprehenderit labore cillum. Aliquip laborum commodo nisi cupidatat labore nostrud exercitation adipisicing mollit eu magna proident ex Lorem. Nostrud magna sint sint consequat consectetur et sint.\r\n",
-    "registered": "2014-11-10T01:25:55 +06:00",
-    "latitude": 16.671695,
-    "longitude": 139.707959,
-    "tags": [
-      "culpa",
-      "deserunt",
-      "tempor",
-      "quis",
-      "reprehenderit",
-      "incididunt",
-      "est"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Farley Frank"
-      },
-      {
-        "id": 1,
-        "name": "Pruitt Frye"
-      },
-      {
-        "id": 2,
-        "name": "Simpson Cardenas"
-      }
-    ],
-    "greeting": "Hello, Leanne Hurst! You have 5 unread messages.",
-    "favoriteFruit": "banana"
-  },{
-    "_id": "54e23c3ed945981ba2580614",
-    "index": 18,
-    "guid": "e608dc5c-fee4-4086-971b-3ebd37bfa137",
-    "isActive": "true",
-    "balance": "$2,227.79",
-    "picture": "http://placehold.it/32x32",
-    "age": 22,
-    "eyeColor": "brown",
-    "name": "Ewing Larson",
-    "gender": "male",
-    "company": "ESCENTA",
-    "email": "ewinglarson@escenta.com",
-    "phone": "+1 (943) 439-3760",
-    "address": "136 Beard Street, Wattsville, New Hampshire, 2803",
-    "about": "Veniam eiusmod exercitation culpa mollit reprehenderit ullamco voluptate voluptate irure qui duis anim et. Laborum dolor quis do voluptate. In pariatur dolor id mollit et enim. Qui ex qui in cillum irure enim non reprehenderit irure et excepteur aliquip eu eu.\r\n",
-    "registered": "2014-07-21T19:17:41 +05:00",
-    "latitude": 15.903555,
-    "longitude": -159.721203,
-    "tags": [
-      "Lorem",
-      "magna",
-      "dolor",
-      "aliquip",
-      "reprehenderit",
-      "eu",
-      "voluptate"
-    ],
-    "friends": [
-      {
-        "id": 0,
-        "name": "Suzette Huffman"
-      },
-      {
-        "id": 1,
-        "name": "Paige Santiago"
-      },
-      {
-        "id": 2,
-        "name": "Dollie Fernandez"
-      }
-    ],
-    "greeting": "Hello, Ewing Larson! You have 16 unread messages.",
-    "favoriteFruit": "strawberry"
-  }
-  ]'
-y = json.load(x)
-print(y["_id"])
+from pprint import pprint
+profiles = json.load(open('profiles.json'))
+# [profile['index'] for profile in profiles]
+# '[profile['index']... line above prints out a list of all the values identified with the 'index' key.
+pprint(profiles)
+print()
+print('profiles.json file has finished printing!')
 
-# Total number of users
-# Number of active users
-# Number of inactive users
-# Grand total of balances for all users
+# Total number of users:
+users = len(profiles)
+print(users)
+
+# Alterate method... Total number of users, with f-string description:
+print(f'number of users: {len(profiles)}')
+
+
+# active user count
+import json
+from pprint import pprint
+profiles = json.load(open('profiles.json'))
+
+active_count = 0
+for profile in profiles:
+    if profile['isActive']:
+         active_count = active_count + 1
+print(f'number of active users: {active_count}')
+print(f'number of inactive users: {number_of_users}')
+number_of_users = (len(profile_data) - (active_count))
+users = len(profiles)
+print(f'number ot total users: {users}')
+
+
+#===================== Gary's example =====================#
+# import json
+# from pprint import pprint
+# with open('profiles.json') as f:
+#     profile_data = json.load(f)
+# #  print the total number of users
+# number_of_users = len(profile_data)
+# print('Total number users in file profile: ',number_of_users)
+ 
+# for user in profile_data:
+#     user_id = user['_id']
+#     print(user_id)     # print the user id
+#     print(user.keys()) # pr
+#=========================================================#
+
+## Grand total of balances for all users:
+import json
+my_sum_total = 0
+with open('profiles.json') as f:
+    profile_data = json.load(f)
+
+# first piece, define a variable to clean up the balance data.
+print('--- Grand total of balances for all users ---')
+def clean_balance(bal):
+    bal = bal[1:] # remove the beginning '$'
+    bal = bal.replace(',', '') # remove commas
+    return float(bal)
+
+#next piece, sum the cleaned balance data with string comprehension in for loop.
+balances = [clean_balance(profile['balance']) for profile in profiles]
+print(sum(balances))
+
+
+
 # Average balance per user
-# User with the lowest balance
-# User with the highest balance
-# Most common favorite fruit
-# Least most common favorite fruit
-# Total number of unread messages for all users
+# Couldn't get this one either... below is Zach's code
+print('--- Average balance per user ---')
+avg = sum(balances) / len(balances)
+print(round(avg, 2))
 
+
+
+# User with the lowest balance
+# Couldn't get this one either... below is Zach's code
+print('--- User with the lowest balance ---')
+lowest = min(balances)
+user = [user for user in profiles if clean_balance(user['balance']) == lowest][0]
+print(user['name'])
+print(round(lowest, 2))
+
+# User with the highest balance
+# applied Zach's code from above, just ran in the inverse.
+print('--- User with the highest balance ---')
+highest = max(balances)
+user = [user for user in profiles if clean_balance(user['balance']) == highest][0]
+print(user['name'])
+print(round(highest, 2))
+# this is the inverse of the 'lowest' code above, and generates the correct answer as the somewhat different code Zach provided in slack.
+
+
+
+# Most common favorite fruit
+# first, define a variable
+print('--- Most common favorite fruit ---')
+favorite_fruits = [user['favoriteFruit'] for user in profiles]
+
+# we'll create a dictionary where the keys are the names of the fruits, and the
+# values are the number of users with that fruit as their favorite
+favorite_fruit_counts = {}
+for fruit in favorite_fruits:
+    if fruit in favorite_fruit_counts:
+        favorite_fruit_counts[fruit] += 1
+    else:
+        favorite_fruit_counts[fruit] = 1
+
+# Now we'll convert the dictionary to a list of key-value pairs so that we can
+# sort it (dictionaries don't have an order, so they can't be sorted). We'll use
+# the `sorted` function and tell it that the way we want to sort the list (using
+# a lambda) is by the second item in each pair (the values, i.e. the count of
+# users with that favorite fruit as their favorite). Once the list is sorted,
+# the last item will be the most common favorite fruit
+items = list(favorite_fruit_counts.items())
+items.sort(key=lambda item: item[1])
+print(items[-1][0])
+
+print('--- Least common favorite fruit ---')
+print(items[0][0])
+
+
+
+# Total number of unread messages for all users
+# My logic for approaching this problem:
+# field to look at: 'greeting'
+# copy code from 'balances' above and edit accordingly
+  # See steps below
+    # first create a define a function that: 
+    # strips out anything that is not 0-9, removing all other characters
+    # then it should convert that string to int
+    # Then create a for loop to 
+    # sum those ints
+
+# I am unable to complete this last item tonight.  I will approach tomorrow.
+# As a reference, Zach's code below.
+# I had the correct or similar approach, but am unaware of how to string all this logic together.
+print('--- Total number of unread messages for all users ---')
+def extract_n_unread_messages(greeting: str):
+    start = 'You have '
+    stop = ' unread messages.'
+    start_index = greeting.index(start) + len(start)
+    stop_index = greeting.index(stop)
+    return int(greeting[start_index:stop_index])
+
+greetings = [user['greeting'] for user in profiles]
+unread_messages = [extract_n_unread_messages(greeting) for greeting in greetings]
+print(sum(unread_messages))
+
+
+
+
+
+# #============ #
+# # below is the short lecture and examples from today for working with json data files.
+# # Good help below:
+# this opens the file and allows it to be read as separate lines
+# with open('file_name') as f:
+#     lines = f.readlines()
+
+# this replaces:  lines = contents.splt('\n')
+
+
+# example:
+# now combine it with the below to capture the first 10 lines
+# for line in lines[:10]  # or lines[-10:]: for the last ten lines of the list
+#     print(line)
+
+
+# To just print the lines that are commented out code:
+# for line in lines:
+#     if line.startswith('#'):
+#         print(line)
+
+# this below is a list comprehension of the above:
+# [print(line) for line in lines if line.startswith('#')]
+# # look at the list comprehension structure and how it compares to the for loop structure above it.
+
+
+# # to tell python how to interact with the file when opening it, read, write, append, create ('r', 'w', 'a', 'x')
+# with open('file_name.txt', x) as f:
+#     f.write('my message to display and write\n')
+
+
+
+
+# # Other handy code examples below:
+# #============ #
+# from sys import exit
+# # this tells python to import the "exit" command from the "sys" library
+
+# filename=input('please enter a python filename: ')
+# if not filename.endswith('py'):
+#     print('Error: bad filename.')
+#     print('      {} does not end with ".py"'.format(firstname))
+#     exit()
+
+# print('Reading file')
+
+# # build a new list of commented out code
+# commented_out_code = []
+# for line in lines:
+#     if line.startswith('#') or line == '':
+#         commented_out_code.append(line)
+#     else:
+#         commented_out_code.append('# ' + line)
+
+# print('Writing to file: {}'.format(filename))
+
+
+# # below opens the file in WRITE mode, and names is as a variable 'f', then writes to the file the 'newline' character and joins it with the "commented out code" function above, to comment out every line that is not blank or already commented out.  This piece of code written into a file would allow the file to update itself.
+
+# with open(filenname), 'w') as f:
+#     f.write('\n'.join(commented_out_code))
+# ============ #
 
 #====================================================================================#
