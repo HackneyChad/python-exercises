@@ -869,8 +869,12 @@ d = np.array([
 ]
 )
 
-d_t_pose = d.transpose()
-d_t_pose.shape
+# immediately below works, but the latter one below is prefered, like numpy shorthand
+# d_t_pose = d.transpose()
+# d_t_pose.shape
+
+# preferred code:
+np.transpose(d).shape
 
 
 # #### 8.4.10 Exercise 10 - Reshape d into an array of 9 x 2
