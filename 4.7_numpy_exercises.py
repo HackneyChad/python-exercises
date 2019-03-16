@@ -893,3 +893,5 @@ d.reshape(9, 2)
 
 
 # #### end of 4.7_numpy_exercises
+
+print('monkey')
